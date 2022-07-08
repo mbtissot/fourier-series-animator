@@ -2,6 +2,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 import os
 import imageio
+import shutil
 
 t = np.linspace(0, 4 * np.pi, 400)
 
@@ -11,9 +12,6 @@ path = os.path.abspath(os.path.dirname(__file__))
 png_dir = path+'/imgs'
 if not os.path.isdir(path+'/imgs'):
     os.mkdir(path+'/imgs')
-    print('created')
-else:
-    print('already have it')
 
 # Função que queremos plotar. Isso aqui é o resultado da onda quadrada
 # Function we are going to plot. This one in particular is the Square Wave
@@ -69,3 +67,4 @@ for nome in nome_real:
         else:
             images.append(imageio.imread(file_path))
 imageio.mimsave(path+'/square_wave.gif', images, duration='0.1')
+shutil.rmtree(path+'/imgs')
